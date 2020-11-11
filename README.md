@@ -14,7 +14,7 @@ Hitriy Kotik (Tricky Cat) is my name and I like dealing in shellcode. I have som
 
  !!!!! A Reverse DNS TCP Payload For Linux !!!!! 
 
- Tell Me , a few things and I will generate the shellcode for you!
+ Tell Me a few things and I will generate the shellcode for you!
 [+] Tell Me The Domain You wish To Connect Back To : rootkitdev.com
 [+] Tell Me The Port   You Wish To Connect Back To : 4444
 [+] I Am Making Your PayLoad Right Now....
