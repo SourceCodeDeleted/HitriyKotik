@@ -164,11 +164,12 @@ main:
     ; push 0x00000100
     ; push 0x0001AAAA
 
-      push 0x00000001
-  push 0x00010000
-  push 0x6d6f6303
-  push 0x656c706d
-  push 0x61786507
+      push 0x00000000
+  push 0x01000100
+  push 0x006d6f63
+  push 0x03766564
+  push 0x74696b74
+  push 0x6f6f720a
   push 0x00000000
   push 0x00000100
   push 0x0001AAAA

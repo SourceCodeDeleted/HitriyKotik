@@ -41,7 +41,7 @@ and you'll be greeted by the Cat above and he will ask you a couple of questions
 # Requirements
 
 Linux is desireable, but not required.
-1. python2.7
+1. python3
 2. nasm
 3. objectdump
 
